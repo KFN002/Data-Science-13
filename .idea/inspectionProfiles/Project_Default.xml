@@ -1,0 +1,49 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="DuplicatedCode" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <Languages>
+        <language minSize="57" name="Python" />
+      </Languages>
+    </inspection_tool>
+    <inspection_tool class="Eslint" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N802" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="PyQt5.uic" />
+          <option value="main.MyWidget.tableWidget" />
+          <option value="main.MyWidget.lineEdit" />
+          <option value="stocks_game.MyWidget.label_2" />
+          <option value="stocks_game.MyWidget.progressBar" />
+          <option value="stocks_game.MyWidget.pushButton" />
+          <option value="stocks_game.MyWidget.graphicsView" />
+          <option value="stocks_game.MyWidget.label_4" />
+          <option value="stocks_game.MyWidget.pushButton_3" />
+          <option value="stocks_game.MyWidget.lcdNumber" />
+          <option value="stocks_game.MyWidget.pushButton_4" />
+          <option value="stocks_game.MyWidget.promocode" />
+          <option value="stocks_game.MyWidget.label" />
+          <option value="stocks_game.MyWidget.pushButton_6" />
+          <option value="stocks_game.MyWidget.tableWidget" />
+          <option value="stocks_game.MyWidget.label_8" />
+          <option value="stocks_game.MyWidget.pushButton_2" />
+          <option value="stocks_game.MyWidget.pushButtuon_7" />
+          <option value="stocks_game.MyWidget.pushButton_7" />
+          <option value="stocks_game.MyWidget.tableWidget_2" />
+          <option value="stocks_game.MyWidget.label_3" />
+          <option value="stocks_game.MyWidget.label_9" />
+          <option value="stocks_game.MyWidget.label_10" />
+          <option value="stocks_game.MyWidget.label_11" />
+          <option value="stocks_game.MyWidget.pushButton_5" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
