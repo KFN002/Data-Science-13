@@ -21,6 +21,8 @@ for column in columns_to_convert:
 
 # Меняем есть на 1 и нет на 0 для удобства работы
 data["развитие_опп"] = data["развитие_опп"].apply(lambda x: 1 if x == 'есть' else 0)
+# Меняем хбп на 1 2 3 для удобства работы
+data["хбп"] = data["хбп"].apply(lambda x: 0 if x == 'Пациенты без ХБП' else (1 if x == 'Стадия C1-C2' else 3))
 
 for elem in data.columns:
     print(elem)
