@@ -17,3 +17,10 @@ def viz_data_box(data, column1, column2):
     plt.title(f'Boxplot для {column1} и {column2}')
     plt.show()
 
+
+def viz_data_scatter(data_frame, x_col, y_col):
+    sns.set(style="whitegrid")
+    plt.figure(figsize=(10, 6))
+    scatter = sns.scatterplot(x=x_col, y=y_col, data=data_frame, edgecolor="w", s=100)
+    plt.show()
+
