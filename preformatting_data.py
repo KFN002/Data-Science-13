@@ -1,7 +1,8 @@
 from tools import *
+import pandas as pd
 
 
-def preformat(df):
+def preformat(df: pd.DataFrame):
     # Перевод строк в фомат pep 8
     df.columns = [col.lower().strip().replace(' ', '_') for col in df.columns]
 
@@ -35,5 +36,8 @@ def preformat(df):
 
     # добавление нового столбца
     df['переливание_крови_и_аик'] = df['аик'] & df['объем_гемотрансфузии']
-
+    
+    # добавление столбца есть_хроническое_заболевание (Рассматриваем сахарный диабет, гипертонию, и хроническую болезнь почек)
+    df["есть_хроническое_заболевание"] = [1 if row["сахарный_диабет"] == 1 or row["гб"] == 1 or row["хбп"] == 1 or row["хбп"] == 3 else 0 for i, row in df.iterrows()]
+    
     return df
