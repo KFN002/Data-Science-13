@@ -18,9 +18,9 @@ def viz_data_box(data, column1, column2):
     plt.show()
 
 
-def viz_data_scatter(data_frame, x_col, y_col):
+def viz_data_scatter(data_frame, column1, column2):
     sns.set(style="whitegrid")
     plt.figure(figsize=(10, 6))
-    scatter = sns.scatterplot(x=x_col, y=y_col, data=data_frame, edgecolor="w", s=100)
+    scatter = sns.scatterplot(x=column1, y=column2, data=data_frame, edgecolor="w", s=100)
     plt.show()
 
