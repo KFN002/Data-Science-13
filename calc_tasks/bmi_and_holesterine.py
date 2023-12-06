@@ -1,3 +1,5 @@
+from scipy.stats import pointbiserialr
+
 from preformatting_data import *
 from graphics import *
 
@@ -8,7 +10,7 @@ data['имт'] = pd.to_numeric(data['имт'], errors='coerce')
 
 # создаем категориальный столбец для удобства работы и подсчета
 data['кат_холестерин'] = (data['холестерин']
-                          .apply(lambda x: 'холестерин_превышен' if x >= 6 else 'холестерин_не_превышен'))
+                          .apply(lambda x: 1 if x >= 6 else 0))
 
 # находим данные для имт выше нормы
 data_with_excess_bmi = data.loc[data['имт'] >= 25]
@@ -21,8 +23,14 @@ viz_data_box(data_with_excess_bmi, 'кат_холестерин', 'имт')
 print(data_grouped)
 
 # посмотрим на взаимосвязь используя аналитические методы:
-cross_table = pd.crosstab(data['кат_холестерин'], data['имт'])
-print(round(cramers_v(cross_table), 4))
+correlation_coefficient, p_value = pointbiserialr(data_with_excess_bmi['кат_холестерин'], data_with_excess_bmi['имт'])
+
+print(f"Point-Biserial Correlation Coefficient: {correlation_coefficient}")
+print(f"P-value: {p_value}")
+
+result = correlation_ratio(data_with_excess_bmi['кат_холестерин'], data_with_excess_bmi['имт'])
+print(f"Correlation using ETA {round(result, 4)}")
+
 
 
 
