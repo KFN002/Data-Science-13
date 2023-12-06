@@ -1,8 +1,6 @@
-import pandas as pd
 from graphics import *
 from preformatting_data import *
-from scipy.stats import shapiro, pearsonr, chi2_contingency
-import numpy as np
+
 
 data = preformat(pd.read_csv('../medics_1.csv', delimiter=',', encoding='utf-8'))
 

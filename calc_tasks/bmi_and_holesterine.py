@@ -1,4 +1,3 @@
-import pandas as pd
 from preformatting_data import *
 from graphics import *
 
