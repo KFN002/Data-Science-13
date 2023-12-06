@@ -21,7 +21,8 @@ data_grouped = round(data_with_excess_bmi['кат_холестерин'].value_c
 viz_data_box(data_with_excess_bmi, 'кат_холестерин', 'имт')
 print(data_grouped)
 
-cross_table = pd.crosstab(data['инфаркт_миокарда'], data['длительность_операции'])
+# посмотрим на взаимосвязь используя аналитические методы:
+cross_table = pd.crosstab(data['кат_холестерин'], data['имт'])
 print(round(cramers_v(cross_table), 4))
 
 
