@@ -16,6 +16,6 @@ print(f"Point-Biserial Correlation Coefficient: {correlation_coefficient}")
 print(f"P-value: {p_value}")
 
 result = correlation_ratio(data['инфаркт_миокарда'], data['длительность_операции'])
-print(f"Correlation using ETA {round(result, 4)}")
+print(f"Correlation using ETA: {round(result, 4)}")
 
 
