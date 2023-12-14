@@ -21,4 +21,3 @@ def correlation_ratio(categories, values):
         ssw += sum((subgroup - np.mean(subgroup)) ** 2)
         ssb += len(subgroup) * (np.mean(subgroup) - np.mean(values)) ** 2
     return (ssb / (ssb + ssw)) ** .5
-
