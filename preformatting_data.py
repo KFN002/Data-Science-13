@@ -56,7 +56,7 @@ def preformat(df: pd.DataFrame):
     # Удалние пропусков, так как в медецине остальные параметры не всегда предсказуемы (т.е. медиана и тд не подойдет)
     df: object = df.dropna()
 
-    catigory = ["развитие_опп",
+    category = ["развитие_опп",
                 "хбп",
                 "пол",
                 "гб",
@@ -75,7 +75,7 @@ def preformat(df: pd.DataFrame):
 
     # Заменение супервыбросов медианой по столбцу(удаление невозможно из-за их большого числа)
     for i in df.columns:
-        if not (i in catigory):
+        if not (i in category):
             zeroable = ["длительность_аик", "время_пережатия_аорты", "объем_гемотрансфузии"]
             if not (i in zeroable):
                 q_low = df[i].quantile(q=0.001)
