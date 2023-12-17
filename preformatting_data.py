@@ -78,8 +78,8 @@ def preformat(df: pd.DataFrame):
         if not (i in catigory):
             zeroable = ["длительность_аик", "время_пережатия_аорты", "объем_гемотрансфузии"]
             if not (i in zeroable):
-                q_low = df[i].quantile(q=0.001)
-                q_hi = df[i].quantile(q=0.999)
+                q_low = df[i].quantile(q=0.01)
+                q_hi = df[i].quantile(q=0.99)
                 def f(x):
                     if (x < q_low) | (x > q_hi):
                         return tools.normtype(x, df[i].median())
@@ -89,11 +89,11 @@ def preformat(df: pd.DataFrame):
                 df[i] = df[i].apply(f)
             else:
                 not_zero = df[i][df[i] != 0]
-                q_low = not_zero.quantile(q=0.001)
-                q_hi = not_zero.quantile(q=0.999)
+                q_low = not_zero.quantile(q=0.01)
+                q_hi = not_zero.quantile(q=0.99)
 
                 def f(x):
-                    if (x < q_low) | (x > q_hi) | (x != 0):
+                    if (x < q_low) | (x > q_hi) & (x != 0):
                         return tools.normtype(x, not_zero.median())
 
                     else:
