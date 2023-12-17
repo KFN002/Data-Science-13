@@ -3,7 +3,14 @@ import numpy as np
 
 
 def convert_to_float(x):
-    return float(str(x).replace(',', '.'))
+    return float(str(x).replace(',', '.').replace("o", "0"))
+
+
+def normtype(x, y):
+    if type(x) == int:
+        return int(y)
+    if type(x) == float:
+        return float(y)
 
 
 def cramers_v(crosstab):
@@ -21,4 +28,3 @@ def correlation_ratio(categories, values):
         ssw += sum((subgroup - np.mean(subgroup)) ** 2)
         ssb += len(subgroup) * (np.mean(subgroup) - np.mean(values)) ** 2
     return (ssb / (ssb + ssw)) ** .5
-
