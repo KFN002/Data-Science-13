@@ -6,6 +6,7 @@ from calc_tasks import *
 data = preformat(pd.read_csv('medics_1.csv', delimiter=',', encoding='utf-8'))
 
 print(data.head(100))
+print(data.shape[0])
 
 for elem in data.columns:
     print(elem)
