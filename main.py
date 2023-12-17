@@ -4,6 +4,7 @@ from preformatting_data import *
 from calc_tasks import *
 
 data = preformat(pd.read_csv('medics_1.csv', delimiter=',', encoding='utf-8'))
+data = check_diagnoz(data)
 
 print(data.head(100))
 print(data.shape[0])

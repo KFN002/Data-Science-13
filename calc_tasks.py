@@ -26,3 +26,17 @@ def calc_chronic_ratio(df: pd.DataFrame):
     percent_2 = count_2_chronic / count_2_all * 100
     
     print(percent_1, percent_2)
+
+def check_diagnoz(data):
+    for index, row in data.iterrows():
+        hbp = row["хбп"]
+        skf = row["скф_расч"]
+        if 60 <= skf <= 89:
+            data["хбп"][index] = 2
+        if 30 <= skf < 60:
+            data["хбп"][index] = 3
+        if 15 <= skf < 30:
+            data["хбп"][index] = 4
+        if skf < 15:
+            data["хбп"][index] = 5
+    return data
