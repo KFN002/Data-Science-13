@@ -22,3 +22,7 @@ else:
 print('------------')
 print(f"Correlation check: {round(corr, 4)}")
 print(f"P-value: {round(p_value, 4)}")
+
+'''
+Ответ: Нет, связь между толщиной паренхимы почек и возрастом не доказана
+'''
