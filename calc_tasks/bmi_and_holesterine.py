@@ -35,6 +35,10 @@ print('----------------------------------------')
 result = correlation_ratio(data_with_excess_bmi['кат_холестерин'], data_with_excess_bmi['имт'])
 print(f"Correlation using ETA: {round(result, 4)}")
 
+'''
+Ответ: Нет, связь между уровнем холестерина и имт выше нормы не доказана
+'''
+
 
 
 
