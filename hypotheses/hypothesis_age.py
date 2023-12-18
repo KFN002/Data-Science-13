@@ -1,5 +1,5 @@
 import pandas as pd
-from scipy.stats import ttest_ind, shapiro, mannwhitneyu
+from scipy.stats import ttest_ind, shapiro, mannwhitneyu, f_oneway
 from preformatting_data import preformat
 
 '''

@@ -4,7 +4,7 @@ from preformatting_data import preformat
 
 
 '''
-H0: Между группами с опп и без него нет разницы в наличии хронических заболеваний
+H0: Между группами с опп и без него нет разницы в аик и переливании крови
 '''
 
 data = preformat(pd.read_csv('../medics_1.csv', delimiter=',', encoding='utf-8'))
