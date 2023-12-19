@@ -81,6 +81,7 @@ def preformat(df: pd.DataFrame):
             if not (i in zeroable):
                 q_low = df[i].quantile(q=0.001)
                 q_hi = df[i].quantile(q=0.999)
+
                 def f(x):
                     if (x < q_low) | (x > q_hi):
                         return tools.normtype(x, df[i].median())
@@ -102,13 +103,12 @@ def preformat(df: pd.DataFrame):
 
                 df[i] = df[i].apply(f)
 
-
-                # добавление нового столбца
+    # добавление нового столбца
     df['переливание_крови_и_аик'] = df['аик'] & df['объем_гемотрансфузии']
 
     # добавление столбца есть_хроническое_заболевание
     # (Рассматриваем сахарный диабет, гипертонию, и хроническую болезнь почек)
-    df["есть_хроническое_заболевание"]\
+    df["есть_хроническое_заболевание"] \
         = [1 if row["сахарный_диабет"] == 1 or row["гб"] == 1 or row["хбп"] == 1 or row["хбп"] == 3 else 0
            for i, row in df.iterrows()]
 

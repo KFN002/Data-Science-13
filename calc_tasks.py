@@ -27,6 +27,7 @@ def calc_chronic_ratio(df: pd.DataFrame):
     
     print(percent_1, percent_2)
 
+
 def check_diagnoz(data):
     for index, row in data.iterrows():
         hbp = row["хбп"]
