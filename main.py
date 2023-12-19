@@ -4,9 +4,9 @@ from preformatting_data import *
 from calc_tasks import *
 
 data = preformat(pd.read_csv('medics_1.csv', delimiter=',', encoding='utf-8'))
-data = check_diagnoz(data)
-data.to_csv("med_formated.csv", index=False)
-print(data.shape[0])
+
+print(check_hbp_diagnosis(data))
+
 print(data["есть_хроническое_заболевание"].unique())
 
 

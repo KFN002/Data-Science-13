@@ -28,7 +28,7 @@ def calc_chronic_ratio(df: pd.DataFrame):
     print(percent_1, percent_2)
 
 
-def check_diagnoz(data):
+def correct_hbp(data):
     for index, row in data.iterrows():
         hbp = row["хбп"]
         skf = row["скф_расч"]
@@ -41,3 +41,19 @@ def check_diagnoz(data):
         if skf < 15:
             data["хбп"][index] = 5
     return data
+
+
+def check_hbp_diagnosis(data):
+    for index, row in data.iterrows():
+        hbp = row["хбп"]
+        skf = row["скф_расч"]
+        if skf > 90:
+            if hbp != 0:
+                return False
+        if 60 <= skf < 90:
+            if data["хбп"][index] != 1:
+                return
+        if 30 <= skf < 60:
+            if data["хбп"][index] != 3:
+                return False
+    return True

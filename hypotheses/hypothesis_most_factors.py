@@ -20,12 +20,11 @@ for factor in ["сад", "дад", "чсс", "рн", "фракция_изгна�
                "холестерин", "мочевина"]:
 
     if shapiro(with_opp[factor])[1] >= 0.05 and shapiro(without_opp[factor])[1] >= 0.05:
-        t_stat, p_value = ttest_ind(with_opp[factor], without_opp[factor], equal_var=False)
+        _, p_value = ttest_ind(with_opp[factor], without_opp[factor], equal_var=False)
     else:
-        t_stat, p_value = mannwhitneyu(with_opp[factor], without_opp[factor])
+        _, p_value = mannwhitneyu(with_opp[factor], without_opp[factor])
 
     # выводим метрики
-    print(f'T-statistic: {round(t_stat, 4)}')
     print(f'P-value: {round(p_value, 4)}')
 
     if p_value < 0.05:
