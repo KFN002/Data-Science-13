@@ -4,6 +4,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from preformatting_data import preformat
+from sklearn.dummy import DummyRegressor
 from sklearn.pipeline import Pipeline
 import pandas as pd
 import numpy as np
@@ -76,3 +77,8 @@ print("Cross-Validation Mean Squared Error:", round(-cv_scores.mean(), 2))
 rounded_predictions = np.round(y_pred, 3).astype(float)
 print(rounded_predictions)
 print(f"Percentage mean absolute error: {round(mean_absolute_percentage_error(y_test, y_pred) * 100, 2)}%")
+
+dummy_regr = DummyRegressor(strategy='constant', constant=4)
+dummy_regr.fit(x_train, y_train)
+basic_predictions = dummy_regr.predict(x_test)
+print(rounded_predictions - basic_predictions)
