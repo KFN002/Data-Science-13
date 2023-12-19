@@ -21,3 +21,6 @@ result = correlation_ratio(data['инфаркт_миокарда'], data['дли
 print(f"Correlation using ETA: {round(result, 4)}")
 
 
+'''
+Не удалось подтвердить связь между длительностью операции и ранее перенесенным инфарктом.
+'''
