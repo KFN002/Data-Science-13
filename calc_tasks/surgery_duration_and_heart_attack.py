@@ -12,8 +12,10 @@ viz_data_box(data, 'инфаркт_миокарда', 'длительность_
 # посмотрим на взаимосвязь используя аналитические методы:
 correlation_coefficient, p_value = pointbiserialr(data['инфаркт_миокарда'], data['длительность_операции'])
 
-print(f"Point-Biserial Correlation Coefficient: {correlation_coefficient}")
-print(f"P-value: {p_value}")
+print(f"Point-Biserial Correlation Coefficient: {round(correlation_coefficient, 4)}")
+print(f"P-value: {round(p_value, 4)}")
+
+print('------------------------')
 
 result = correlation_ratio(data['инфаркт_миокарда'], data['длительность_операции'])
 print(f"Correlation using ETA: {round(result, 4)}")

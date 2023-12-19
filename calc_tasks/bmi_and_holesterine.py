@@ -22,14 +22,22 @@ data_grouped = round(data_with_excess_bmi['кат_холестерин'].value_c
 viz_data_box(data_with_excess_bmi, 'кат_холестерин', 'имт')
 print(data_grouped)
 
+print('----------------------------------------')
+
 # посмотрим на взаимосвязь используя аналитические методы:
 correlation_coefficient, p_value = pointbiserialr(data_with_excess_bmi['кат_холестерин'], data_with_excess_bmi['имт'])
 
-print(f"Point-Biserial Correlation Coefficient: {correlation_coefficient}")
-print(f"P-value: {p_value}")
+print(f"Point-Biserial Correlation Coefficient: {round(correlation_coefficient, 4)}")
+print(f"P-value: {round(p_value, 4)}")
+
+print('----------------------------------------')
 
 result = correlation_ratio(data_with_excess_bmi['кат_холестерин'], data_with_excess_bmi['имт'])
 print(f"Correlation using ETA: {round(result, 4)}")
+
+'''
+Ответ: Нет, связь между уровнем холестерина и имт выше нормы не доказана
+'''
 
 
 

@@ -93,7 +93,7 @@ def preformat(df: pd.DataFrame):
                 q_hi = not_zero.quantile(q=0.999)
 
                 def f(x):
-                    if ((x < q_low) | (x > q_hi)) & (x != 0):
+                    if (x < q_low) | (x > q_hi) | (x != 0):
                         return tools.normtype(x, not_zero.median())
 
                     else:
