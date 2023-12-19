@@ -1,11 +1,12 @@
 import pandas as pd
-from tools import *
 from graphics import *
 from preformatting_data import *
+from calc_tasks import *
 
 data = preformat(pd.read_csv('medics_1.csv', delimiter=',', encoding='utf-8'))
 
 print(data.head(100))
+print(data.shape[0])
 
 for elem in data.columns:
     print(elem)
@@ -14,6 +15,11 @@ for elem in data.columns:
     print(f'min_{elem}: {min(data[elem])}')
 
 print(data.columns)
+
+# выполнение задач с подсчётами
+
+calc_chronic_ratio(data)
+
 
 # графический анализ
 
