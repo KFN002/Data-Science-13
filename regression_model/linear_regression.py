@@ -44,7 +44,7 @@ data = preformat(pd.read_csv('../medics_1.csv', delimiter=',', encoding='utf-8')
 
 x = data[["возраст", "время_пережатия_аорты", "объем_кровопотерии",
           "есть_хроническое_заболевание", "переливание_крови_и_аик",
-          "чсс", "мочевина", "длительность_аик"]]
+          "чсс", "мочевина", "длительность_аик", "развитие_опп"]]
 
 
 x_train, x_test, y_train, y_test = train_test_split(x, data["калий"],
@@ -53,7 +53,8 @@ x_train, x_test, y_train, y_test = train_test_split(x, data["калий"],
 preprocessor = ColumnTransformer(
     transformers=[
         ('ill_category', OneHotEncoder(), ["есть_хроническое_заболевание"]),
-        ('aik_blood_category', OneHotEncoder(), ['переливание_крови_и_аик'])
+        ('aik_blood_category', OneHotEncoder(), ['переливание_крови_и_аик']),
+        ('opp_category', OneHotEncoder(), ['развитие_опп'])
     ],
     remainder='passthrough'
 )
