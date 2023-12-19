@@ -5,17 +5,10 @@ from calc_tasks import *
 
 data = preformat(pd.read_csv('medics_1.csv', delimiter=',', encoding='utf-8'))
 data = check_diagnoz(data)
-
-print(data.head(100))
+data.to_csv("med_formated.csv", index=False)
 print(data.shape[0])
+print(data["есть_хроническое_заболевание"].unique())
 
-for elem in data.columns:
-    print(elem)
-    print(data[elem])
-    print(f'max_{elem}: {max(data[elem])}')
-    print(f'min_{elem}: {min(data[elem])}')
-
-print(data.columns)
 
 # выполнение задач с подсчётами
 
