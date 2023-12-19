@@ -40,6 +40,7 @@ for factor1 in ["хбп", "возраст", "сахарный_диабет", "г
         print(pd.DataFrame(round(data[factor1].describe().T, 2)))
         print('-------------------------------------------------')
         viz_data_hist_s(data, factor1)
+        viz_data_box(data, factor1)
 
     # визуализируем данные:
     if factor1 in ["хбп", "сахарный_диабет", "гб", "аик"]:

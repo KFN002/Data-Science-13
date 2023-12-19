@@ -11,10 +11,14 @@ def viz_data_hist(data, column1, column2):
     plt.show()
 
 
-def viz_data_box(data, column1, column2):
+def viz_data_box(data, column1, column2=None):
     plt.figure(figsize=(12, 6))
-    sns.boxplot(x=column1, y=column2, data=data)
-    plt.title(f'Boxplot для {column1} и {column2}')
+    if column2 is not None:
+        sns.boxplot(x=column1, y=column2, data=data)
+        plt.title(f'Boxplot для {column1} и {column2}')
+    else:
+        sns.boxplot(x=column1, data=data)
+        plt.title(f'Boxplot для {column1}')
     plt.show()
 
 
