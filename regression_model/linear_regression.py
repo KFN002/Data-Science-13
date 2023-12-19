@@ -44,7 +44,7 @@ data = preformat(pd.read_csv('../medics_1.csv', delimiter=',', encoding='utf-8')
 
 x = data[["возраст", "время_пережатия_аорты", "объем_кровопотерии",
           "есть_хроническое_заболевание", "переливание_крови_и_аик",
-          "чсс", "мочевина", "длительность_аик", "развитие_опп"]]
+          "чсс", "мочевина", "длительность_аик"]]
 
 
 x_train, x_test, y_train, y_test = train_test_split(x, data["калий"],
@@ -53,8 +53,7 @@ x_train, x_test, y_train, y_test = train_test_split(x, data["калий"],
 preprocessor = ColumnTransformer(
     transformers=[
         ('ill_category', OneHotEncoder(), ["есть_хроническое_заболевание"]),
-        ('aik_blood_category', OneHotEncoder(), ['переливание_крови_и_аик']),
-        ('opp_category', OneHotEncoder(), ['развитие_опп'])
+        ('aik_blood_category', OneHotEncoder(), ['переливание_крови_и_аик'])
     ],
     remainder='passthrough'
 )
@@ -77,4 +76,3 @@ print("Cross-Validation Mean Squared Error:", round(-cv_scores.mean(), 2))
 rounded_predictions = np.round(y_pred, 3).astype(float)
 print(rounded_predictions)
 print(f"Percentage mean absolute error: {round(mean_absolute_percentage_error(y_test, y_pred) * 100, 2)}%")
-print(f"Difference between predicted and actual potassium levels: {rounded_predictions - y_test.values}")
