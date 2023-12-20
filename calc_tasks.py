@@ -25,7 +25,8 @@ def calc_chronic_ratio(df: pd.DataFrame):
     percent_1 = count_1_chronic / count_1_all * 100
     percent_2 = count_2_chronic / count_2_all * 100
     
-    print(percent_1, percent_2)
+    print(round(percent_1, 2), round(percent_2, 2))  # 96.97 98.28
+    # Процент для групп с хроническими заболеваниями: Есть опп - 96.97, Нет опп - 98.28
 
 
 def correct_hbp(data):
