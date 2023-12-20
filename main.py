@@ -5,16 +5,10 @@ from calc_tasks import *
 
 data = preformat(pd.read_csv('medics_1.csv', delimiter=',', encoding='utf-8'))
 
-print(data.head(100))
-print(data.shape[0])
+print(check_hbp_diagnosis(data))
 
-for elem in data.columns:
-    print(elem)
-    print(data[elem])
-    print(f'max_{elem}: {max(data[elem])}')
-    print(f'min_{elem}: {min(data[elem])}')
+print(data["есть_хроническое_заболевание"].unique())
 
-print(data.columns)
 
 # выполнение задач с подсчётами
 

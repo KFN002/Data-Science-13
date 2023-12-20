@@ -14,12 +14,11 @@ without_opp = data[data['развитие_опп'] == 0]
 
 # подсчет метрик в зависимости от распределения
 if shapiro(with_opp["холестерин"])[1] >= 0.05 and shapiro(without_opp["холестерин"])[1] >= 0.05:
-    t_stat, p_value = ttest_ind(with_opp['холестерин'], without_opp['холестерин'], equal_var=False)
+    _, p_value = ttest_ind(with_opp['холестерин'], without_opp['холестерин'], equal_var=False)
 else:
-    t_stat, p_value = mannwhitneyu(with_opp['холестерин'], without_opp['холестерин'])
+    _, p_value = mannwhitneyu(with_opp['холестерин'], without_opp['холестерин'])
 
 # выводим метрики
-print(f'T-statistic: {round(t_stat, 4)}')
 print(f'P-value: {round(p_value, 4)}')
 
 print('------------------------')

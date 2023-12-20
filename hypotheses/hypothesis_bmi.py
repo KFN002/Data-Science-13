@@ -14,12 +14,11 @@ without_opp = data[data['развитие_опп'] == 0]
 
 # подсчет метрик в зависимости от распределения
 if shapiro(with_opp["имт"])[1] >= 0.05 and shapiro(without_opp["имт"])[1] >= 0.05:
-    t_stat, p_value = ttest_ind(with_opp['имт'], without_opp['имт'], equal_var=False)
+    _, p_value = ttest_ind(with_opp['имт'], without_opp['имт'], equal_var=False)
 else:
-    t_stat, p_value = mannwhitneyu(with_opp['имт'], without_opp['имт'])
+    _, p_value = mannwhitneyu(with_opp['имт'], without_opp['имт'])
 
 # выводим метрики
-print(f'T-statistic: {round(t_stat, 4)}')
 print(f'P-value: {round(p_value, 4)}')
 
 print('------------------------')

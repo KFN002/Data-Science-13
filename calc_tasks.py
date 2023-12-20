@@ -1,5 +1,5 @@
 import pandas as pd
-from preformatting_data import *
+
 
 def calc_chronic_ratio(df: pd.DataFrame):
     '''Посчитать процент пациентов с хроническими заболеваниями для групп "есть ОПП/нет ОПП"'''
@@ -29,7 +29,32 @@ def calc_chronic_ratio(df: pd.DataFrame):
     # Процент для групп с хроническими заболеваниями: Есть опп - 96.97, Нет опп - 98.28
 
 
-if __name__ == "__main__":
-    data = preformat(pd.read_csv('medics_1.csv', delimiter=',', encoding='utf-8'))
+def correct_hbp(data):
+    for index, row in data.iterrows():
+        hbp = row["хбп"]
+        skf = row["скф_расч"]
+        if 60 <= skf <= 89:
+            data["хбп"][index] = 2
+        if 30 <= skf < 60:
+            data["хбп"][index] = 3
+        if 15 <= skf < 30:
+            data["хбп"][index] = 4
+        if skf < 15:
+            data["хбп"][index] = 5
+    return data
 
-    calc_chronic_ratio(data)
+
+def check_hbp_diagnosis(data):
+    for index, row in data.iterrows():
+        hbp = row["хбп"]
+        skf = row["скф_расч"]
+        if skf > 90:
+            if hbp != 0:
+                return False
+        if 60 <= skf < 90:
+            if data["хбп"][index] != 1:
+                return
+        if 30 <= skf < 60:
+            if data["хбп"][index] != 3:
+                return False
+    return True
