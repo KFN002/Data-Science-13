@@ -26,8 +26,7 @@ def calc_chronic_ratio(df: pd.DataFrame):
     percent_2 = count_2_chronic / count_2_all * 100
     
     print(round(percent_1, 2), round(percent_2, 2))  # 96.97 98.28
-    
-    print(df.value_counts(["развитие_опп", "есть_хроническое_заболевание"]))
+    # Процент для групп с хроническими заболеваниями: Есть опп - 96.97, Нет опп - 98.28
 
 
 if __name__ == "__main__":
