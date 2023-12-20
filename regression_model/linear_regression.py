@@ -78,7 +78,7 @@ rounded_predictions = np.round(y_pred, 3).astype(float)
 print(rounded_predictions)
 print(f"Percentage mean absolute error: {round(mean_absolute_percentage_error(y_test, y_pred) * 100, 2)}%")
 
-dummy_regr = DummyRegressor(strategy='constant', constant=4)
+dummy_regr = DummyRegressor(strategy='constant', constant=4.189)
 dummy_regr.fit(x_train, y_train)
 basic_predictions = dummy_regr.predict(x_test)
 print(rounded_predictions - basic_predictions)
