@@ -1,5 +1,5 @@
-import tools
-from tools import *
+from utils import tools
+from utils.tools import *
 import pandas as pd
 
 
@@ -56,7 +56,7 @@ def preformat(df: pd.DataFrame):
     # Удалние пропусков, так как в медецине остальные параметры не всегда предсказуемы (т.е. медиана и тд не подойдет)
     df: object = df.dropna()
 
-    catigory = ["развитие_опп",
+    category = ["развитие_опп",
                 "хбп",
                 "пол",
                 "гб",
@@ -76,7 +76,7 @@ def preformat(df: pd.DataFrame):
 
     # Заменение супервыбросов медианой по столбцу(удаление невозможно из-за их большого числа)
     for i in df.columns:
-        if not (i in catigory):
+        if not (i in category):
             zeroable = ["длительность_аик", "время_пережатия_аорты", "объем_гемотрансфузии"]
             if not (i in zeroable):
                 q_low = df[i].quantile(q=0.001)
@@ -111,5 +111,13 @@ def preformat(df: pd.DataFrame):
     df["есть_хроническое_заболевание"] \
         = [1 if row["сахарный_диабет"] == 1 or row["гб"] == 1 or row["хбп"] == 1 or row["хбп"] == 3 else 0
            for i, row in df.iterrows()]
+
+    df["имт_кат"] = ["Выраженный дефицит массы тела" if row["имт"] <= 16 else
+                     "Недостаточная масса тела" if row["имт"] < 18.5 else
+                     "Норма" if row["имт"] < 25 else
+                     "Избыточная масса тела" if row["имт"] < 30 else
+                     "Ожирение 1 степени" if row["имт"] < 35 else
+                     "Ожирение 2 степени" if row["имт"] < 40 else
+                     "Ожирение 3 степени" for _, row in df.iterrows()]
 
     return df
